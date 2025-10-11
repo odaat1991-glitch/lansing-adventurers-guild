@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lansing Adventurers' Guild | Investment Proposal & Executive Summary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Brilliant Blues -->
+    <!-- Application Structure Plan: A formal, single-page executive summary for investors. It leads with the quantifiable market opportunity, details the revenue streams with profit margins, presents multi-scenario financial projections with a break-even analysis, and concludes with a strategic outlook (SWOT) and a clear, phased roadmap. This structure directly answers investor questions about market size, profitability, and growth strategy. -->
+    <!-- Visualization & Content Choices: Market Size -> Goal: Inform -> Large Stat with Sourcing -> Builds credibility. Revenue Streams -> Goal: Compare -> 3-Column HTML Layout with Margin % -> Shifts focus from features to financial performance. Financial Projections -> Goal: Compare -> Bar Chart + Detailed HTML Table -> Provides both a visual summary and the specific numbers investors need (profit, break-even). Roadmap -> Goal: Organize -> HTML/CSS Timeline -> Clearly communicates long-term vision and planning. All choices avoid SVG/Mermaid as required. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            background-color: #F8FAFC; /* A slightly crisper, professional light gray */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 40vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800 font-sans">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <!-- Header -->
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#0B2D48] mb-2">Investment Proposal: Lansing Adventurers' Guild</h1>
+            <p class="text-lg md:text-xl text-[#124E78]">An executive summary visualizing a first-mover opportunity in a captive entertainment market.</p>
+        </header>
+
+        <!-- Main Grid -->
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Market Opportunity Card -->
+            <div class="bg-white rounded-lg shadow-md p-6 md:col-span-1 flex flex-col justify-center text-center">
+                <h2 class="text-2xl font-bold text-[#0B2D48] mb-2">Total Addressable Market</h2>
+                <p class="text-7xl font-bold text-[#2085A8]">4,500+</p>
+                <p class="text-lg text-[#124E78] font-semibold">Addressable Market Estimate</p>
+                <p class="mt-2 text-sm text-gray-500">Based on student populations (MSU, LCC) and regional demographics (ages 18-40).</p>
+            </div>
+            
+            <!-- Target Audience Chart -->
+            <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2">
+                <h2 class="text-2xl font-bold text-center text-[#0B2D48] mb-4">Key Market Segments</h2>
+                <div class="chart-container mx-auto">
+                    <canvas id="audienceChart"></canvas>
+                </div>
+                 <p class="text-center mt-4 text-gray-600">Our strategy targets three high-value segments with demonstrated spending in the experience economy.</p>
+            </div>
+
+            <!-- Revenue Streams Section -->
+            <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-3">
+                <h2 class="text-3xl font-bold text-center text-[#0B2D48] mb-6">Core Revenue Streams & Profitability</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+                    <div class="border-2 border-gray-200 rounded-lg p-4">
+                        <h3 class="text-xl font-bold text-[#124E78]">Introductory Courses</h3>
+                        <p class="text-lg text-gray-600">High-demand, low-overhead entry point for new customers.</p>
+                        <p class="text-3xl font-bold text-green-600 my-2">~85%</p>
+                        <p class="font-semibold text-gray-700">Estimated Gross Margin</p>
+                    </div>
+                    <div class="border-2 border-gray-200 rounded-lg p-4 bg-blue-50">
+                        <h3 class="text-xl font-bold text-[#124E78]">Hosted Campaigns</h3>
+                        <p class="text-lg text-gray-600">Primary driver of recurring, predictable subscription-like revenue.</p>
+                        <p class="text-3xl font-bold text-green-600 my-2">~75%</p>
+                        <p class="font-semibold text-gray-700">Estimated Gross Margin</p>
+                    </div>
+                    <div class="border-2 border-gray-200 rounded-lg p-4">
+                        <h3 class="text-xl font-bold text-[#124E78]">Product Add-Ons</h3>
+                        <p class="text-lg text-gray-600">High-margin retail goods that enhance customer lifetime value.</p>
+                        <p class="text-3xl font-bold text-green-600 my-2">~60%</p>
+                        <p class="font-semibold text-gray-700">Estimated Gross Margin</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Projections Chart -->
+            <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-3">
+                <h2 class="text-2xl font-bold text-center text-[#0B2D48] mb-4">Year 1 Financial Projections</h2>
+                <div class="w-full max-w-4xl mx-auto h-80">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="mt-6 border-t pt-4">
+                    <h3 class="text-xl font-bold text-center text-[#0B2D48] mb-4">Key Financials - Year 1 (Moderate Scenario)</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full max-w-2xl mx-auto text-left">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="p-2 font-semibold">Metric</th>
+                                    <th class="p-2 font-semibold">Value</th>
+                                    <th class="p-2 font-semibold">Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="p-2 font-bold">Gross Revenue</td>
+                                    <td class="p-2">$113,760</td>
+                                    <td class="p-2">Based on moderate customer acquisition rate.</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-2 font-bold">Estimated Operating Costs</td>
+                                    <td class="p-2">($45,000)</td>
+                                    <td class="p-2">Includes marketing, supplies, venue fees, contractor pay.</td>
+                                </tr>
+                                <tr class="border-b bg-green-50">
+                                    <td class="p-2 font-bold text-green-800">Net Profit (EBITDA)</td>
+                                    <td class="p-2 font-bold text-green-800">$68,760</td>
+                                    <td class="p-2 text-green-800">Represents an approx. 60% profit margin.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-bold">Break-Even Point</td>
+                                    <td class="p-2">~1,800 Player-Sessions</td>
+                                    <td class="p-2">Achievable within the first 5-6 months of operation.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SWOT Analysis -->
+            <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-3">
+                <h2 class="text-3xl font-bold text-center text-[#0B2D48] mb-6">Strategic Outlook (SWOT Analysis)</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h3 class="text-xl font-bold text-[#0B2D48]">Strengths</h3>
+                        <ul class="list-disc list-inside mt-2 text-gray-700">
+                            <li>First-mover advantage in a defined market</li>
+                            <li>Lean, low-capital business model</li>
+                            <li>Diversified, high-margin revenue streams</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h3 class="text-xl font-bold text-[#0B2D48]">Weaknesses</h3>
+                        <ul class="list-disc list-inside mt-2 text-gray-700">
+                            <li>Initial dependency on key personnel (DMs)</li>
+                            <li>Requires establishing new local partnerships</li>
+                            <li>Limited initial brand recognition</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h3 class="text-xl font-bold text-[#0B2D48]">Opportunities</h3>
+                        <ul class="list-disc list-inside mt-2 text-gray-700">
+                            <li>Expansion into corporate team-building sector</li>
+                            <li>Development of proprietary digital products</li>
+                            <li>Franchise model potential for other college towns</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h3 class="text-xl font-bold text-[#0B2D48]">Threats</h3>
+                        <ul class="list-disc list-inside mt-2 text-gray-700">
+                            <li>Competition from free, informal play groups</li>
+                            <li>Venue availability and cost fluctuations</li>
+                            <li>Changes in discretionary consumer spending</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Growth Strategy -->
+            <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-3">
+                 <h2 class="text-3xl font-bold text-center text-[#0B2D48] mb-8">Phased Growth Strategy & Milestones</h2>
+                 <div class="flex flex-col md:flex-row justify-between text-center space-y-4 md:space-y-0 relative">
+                     <!-- Connecting line -->
+                     <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-300 transform -translate-y-8"></div>
+                     
+                    <div class="flex-1 z-10">
+                        <div class="bg-white border-2 border-[#124E78] text-[#124E78] rounded-full w-16 h-16 mx-auto flex items-center justify-center text-xl font-bold mb-2">P1</div>
+                        <h3 class="font-bold">Phase 1: Launch (Q1-Q2)</h3>
+                        <ul class="text-sm text-gray-600 list-none px-2">
+                            <li>Establish 2+ venue partners</li>
+                            <li>Achieve break-even point</li>
+                            <li>Secure 50+ regular players</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 z-10">
+                        <div class="bg-white border-2 border-[#124E78] text-[#124E78] rounded-full w-16 h-16 mx-auto flex items-center justify-center text-xl font-bold mb-2">P2</div>
+                        <h3 class="font-bold">Phase 2: Growth (Q3-Q4)</h3>
+                        <ul class="text-sm text-gray-600 list-none px-2">
+                            <li>Launch corporate packages</li>
+                            <li>Hire & train 2 additional DMs</li>
+                            <li>Double monthly revenue</li>
+                        </ul>
+                    </div>
+                     <div class="flex-1 z-10">
+                        <div class="bg-white border-2 border-[#124E78] text-[#124E78] rounded-full w-16 h-16 mx-auto flex items-center justify-center text-xl font-bold mb-2">P3</div>
+                        <h3 class="font-bold">Phase 3: Expansion (Year 2+)</h3>
+                        <ul class="text-sm text-gray-600 list-none px-2">
+                            <li>Explore dedicated location leasing</li>
+                            <li>Develop scalable online offerings</li>
+                            <li>Pilot expansion to a second market</li>
+                        </ul>
+                    </div>
+                 </div>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tooltipTitleCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                } else {
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            
+            const brilliantBlues = {
+                darkBlue: '#0B2D48',
+                midBlue: '#124E78',
+                teal: '#2085A8',
+                aqua: '#52ADAF',
+                lightBackground: '#F8FAFC'
+            };
+
+            // Audience Chart (Donut)
+            const audienceCtx = document.getElementById('audienceChart').getContext('2d');
+            new Chart(audienceCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Student Population (18-24)', 'Young Professionals (25-40)', 'Existing Hobbyists'],
+                    datasets: [{
+                        label: 'Market Segments',
+                        data: [45, 35, 20],
+                        backgroundColor: [
+                            brilliantBlues.teal,
+                            brilliantBlues.midBlue,
+                            brilliantBlues.aqua
+                        ],
+                        borderColor: brilliantBlues.lightBackground,
+                        borderWidth: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        ...tooltipTitleCallback.plugins,
+                        legend: {
+                            position: 'bottom',
+                        },
+                    }
+                }
+            });
+
+            // Revenue Chart (Bar)
+            const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(revenueCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Conservative Scenario', 'Moderate Scenario', 'Aggressive Scenario'],
+                    datasets: [{
+                        label: 'Year 1 Gross Revenue ($)',
+                        data: [56880, 113760, 170640],
+                        backgroundColor: [
+                            brilliantBlues.aqua,
+                            brilliantBlues.teal,
+                            brilliantBlues.midBlue
+                        ],
+                        borderColor: brilliantBlues.darkBlue,
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value, index, values) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        ...tooltipTitleCallback.plugins,
+                        legend: {
+                            display: false
+                        },
+                         title: {
+                            display: true,
+                            text: 'Gross Revenue Based on Customer Acquisition Rate',
+                            padding: {
+                                bottom: 10
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+
