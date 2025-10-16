@@ -43,10 +43,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Form submission handling
-    const form = document.querySelector('.contact-form');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        alert('Form submitted successfully!');
-        form.reset();
-    });
+    const form = document.getElementById('booking-form');
+    if (form) {
+        const formConfirmation = document.getElementById('form-confirmation');
+        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'; // IMPORTANT: Replace with your script URL
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    form.style.display = 'none';
+                    formConfirmation.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Inquiry';
+                    alert('An error occurred. Please try again.');
+                });
+        });
+    }
 });
