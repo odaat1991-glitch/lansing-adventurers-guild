@@ -9,47 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-
-<style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Quattrocento', serif;
-            background-color: #f8f9fa; /* Light Gray */
-            color: #212529; /* Almost Black */
-        }
-        h1, h2, h3, h4 {
-            font-family: 'IM Fell English', serif;
-        }
-        .hero-section {
-            background-color: #111827; /* Very Dark Blue/Gray for max contrast */
-        }
-        .cta-button {
-            transition: all 0.3s ease-in-out;
-        }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        .tab-button.active {
-            border-color: #0D6EFD; /* Professional Blue */
-            background-color: #0D6EFD;
-            color: #ffffff;
-        }
-        .faq-question {
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .faq-question:hover {
-            background-color: #e7f1ff;
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-        }
-    </style>
 </head>
 <body class="bg-gray-100">
     <header class="hero-section text-white">
@@ -61,7 +20,7 @@
     </header>
 
     <main>
-        
+
 
 <section class="py-16 bg-white">
             <div class="container mx-auto px-6 text-center">
@@ -86,13 +45,13 @@
             </div>
         </section>
 
-        
+
 
 <section id="services" class="py-16">
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center mb-2">Choose Your Path</h2>
                 <p class="text-center max-w-2xl mx-auto mb-10">We offer a range of services tailored to your experience level and interests. Find the perfect fit for your adventuring style.</p>
-                
+
                 <div class="flex justify-center border-b-2 border-gray-300 mb-8">
                     <button class="tab-button active text-lg font-bold py-3 px-8 border-b-4" data-tab="beginners">For Beginners</button>
                     <button class="tab-button text-lg font-bold py-3 px-8 border-b-4 border-transparent" data-tab="campaigns">Hosted Campaigns</button>
@@ -170,7 +129,7 @@
             </div>
         </section>
 
-        
+
 
 <section class="py-16 bg-white">
             <div class="container mx-auto px-6 text-center">
@@ -197,7 +156,7 @@
             </div>
         </section>
 
-        
+
 
 <section id="faq" class="py-16">
             <div class="container mx-auto px-6 max-w-3xl">
@@ -233,14 +192,14 @@
                  </div>
             </div>
         </section>
-        
-        
+
+
 
 <section id="signup" class="py-20 bg-gray-100">
             <div class="container mx-auto px-6 text-center">
                  <h2 class="text-4xl font-bold text-gray-800">Reserve Your Seat at the Table</h2>
                  <p class="text-xl mt-4 max-w-3xl mx-auto text-gray-600 mb-12">Ready to roll? Fill out the form below to inquire about our courses and campaigns. We'll get back to you within 24 hours to confirm your spot and welcome you to the Guild!</p>
-                 
+
                  <div class="max-w-4xl mx-auto">
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfq5kKB9g0vLCXDd1hpGimH6Hxzh_Z8Xm0e_JxDsk8MyELLcA/viewform?embedded=true" width="640" height="2414" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                  </div>
@@ -253,61 +212,6 @@
         <p>Lansing, Michigan</p>
     </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Tab functionality
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            const targetTab = button.dataset.tab;
-            tabContents.forEach(content => {
-                if (content.id === targetTab) {
-                    content.classList.remove('hidden');
-                } else {
-                    content.classList.add('hidden');
-                }
-            });
-        });
-    });
-
-    // FAQ Accordion functionality
-    const faqQuestions = document.querySelectorAll('.faq-question');
-
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            const icon = question.querySelector('span');
-            
-            if (answer.style.maxHeight) {
-                answer.style.maxHeight = null;
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                // Close other open FAQs
-                document.querySelectorAll('.faq-answer').forEach(ans => {
-                    if (ans.style.maxHeight) {
-                        ans.style.maxHeight = null;
-                        ans.previousElementSibling.querySelector('span').style.transform = 'rotate(0deg)';
-                    }
-                });
-                
-                answer.style.maxHeight = answer.scrollHeight + "px";
-                icon.style.transform = 'rotate(45deg)';
-            }
-        });
-    });
-});
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
