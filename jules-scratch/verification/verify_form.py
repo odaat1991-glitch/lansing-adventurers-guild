@@ -7,7 +7,7 @@ def run_verification():
         page = browser.new_page()
 
         # Get the absolute path to the index.html file
-        file_path = os.path.abspath('index.html')
+        file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'index.html'))
 
         # Navigate to the local file
         page.goto(f'file://{file_path}#signup')
