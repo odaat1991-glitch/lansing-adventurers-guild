@@ -1,47 +1,70 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Tab functionality
+// script.js
+
+document.addEventListener('DOMContentLoaded', function() {
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
 
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+    // Initialize active state for tabs
+    tabButtons.forEach(button => button.setAttribute('aria-selected', 'false'));
+    tabContents.forEach(content => content.setAttribute('aria-labelledby', ''));
 
-            const targetTab = button.dataset.tab;
-            tabContents.forEach(content => {
-                if (content.id === targetTab) {
-                    content.classList.remove('hidden');
-                } else {
-                    content.classList.add('hidden');
-                }
-            });
+    tabButtons[0].setAttribute('aria-selected', 'true');
+    tabContents[0].classList.add('active');
+    tabContents[0].setAttribute('aria-labelledby', 'beginners-tab');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active state from all tabs
+            tabButtons.forEach(btn => btn.setAttribute('aria-selected', 'false'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Add active state to clicked tab and corresponding content
+            this.setAttribute('aria-selected', 'true');
+            const targetId = this.getAttribute('data-tab');
+            document.getElementById(targetId).classList.add('active');
+            document.getElementById(targetId).setAttribute('aria-labelledby', this.id);
         });
     });
 
-    // FAQ Accordion functionality
+    // FAQ accordion functionality
     const faqQuestions = document.querySelectorAll('.faq-question');
 
     faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            const icon = question.querySelector('span');
-
+        question.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
             if (answer.style.maxHeight) {
                 answer.style.maxHeight = null;
-                icon.style.transform = 'rotate(0deg)';
+                this.setAttribute('aria-expanded', 'false');
             } else {
-                // Close other open FAQs
-                document.querySelectorAll('.faq-answer').forEach(ans => {
-                    if (ans.style.maxHeight) {
-                        ans.style.maxHeight = null;
-                        ans.previousElementSibling.querySelector('span').style.transform = 'rotate(0deg)';
-                    }
-                });
-
                 answer.style.maxHeight = answer.scrollHeight + "px";
-                icon.style.transform = 'rotate(45deg)';
+                this.setAttribute('aria-expanded', 'true');
             }
         });
     });
+
+    // Form submission handling
+    const form = document.getElementById('booking-form');
+    if (form) {
+        const formConfirmation = document.getElementById('form-confirmation');
+        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'; // IMPORTANT: Replace with your script URL
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    form.style.display = 'none';
+                    formConfirmation.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Inquiry';
+                    alert('An error occurred. Please try again.');
+                });
+        });
+    }
 });

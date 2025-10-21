@@ -1,38 +1,74 @@
-html {
-    scroll-behavior: smooth;
-}
+/* styles.css */
+
 body {
-    font-family: 'Quattrocento', serif;
-    background-color: #f8f9fa; /* Light Gray */
-    color: #212529; /* Almost Black */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
 }
-h1, h2, h3, h4 {
-    font-family: 'IM Fell English', serif;
+
+header, main, footer {
+    width: 100%;
+    text-align: center;
 }
-.hero-section {
-    background-color: #111827; /* Very Dark Blue/Gray for max contrast */
+
+.hero-banner {
+    background-image: url('images/hero.jpg');
+    background-size: cover;
+    color: #fff;
+    padding: 5rem 0;
 }
-.cta-button {
-    transition: all 0.3s ease-in-out;
+
+.services, .testimonials, .blog, .contact {
+    padding: 2rem 1rem;
 }
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+.tab-button {
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #f4f4f4;
+    border: none;
+    cursor: pointer;
+    border-bottom: 4px solid transparent;
+    transition: border-bottom 0.3s ease;
 }
+
 .tab-button.active {
-    border-color: #0D6EFD; /* Professional Blue */
-    background-color: #0D6EFD;
-    color: #ffffff;
+    color: #ff6b0a;
+    border-bottom-color: #ff6b0a;
 }
+
+.tab-content {
+    display: none;
+    padding: 1rem;
+}
+
+.tab-content.active {
+    display: block;
+}
+
 .faq-question {
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 1rem;
 }
-.faq-question:hover {
-    background-color: #e7f1ff;
-}
+
 .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.3s ease;
+}
+
+/* ... existing styles ... */
+
+/* Form Styles */
+#booking-form .form-input, #booking-form .form-textarea, #booking-form .form-select {
+    border: 1px solid #D1D5DB;
+    transition: all 0.3s ease;
+}
+
+#booking-form .form-input:focus, #booking-form .form-textarea:focus, #booking-form .form-select:focus {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
